@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: volume-pod
+spec:
+  containers:
+  - name: express-test
+    image: lukondefmwila/express-test:latest
+    volumeMounts:
+    - name: secret-volume
+      mountPath: /etc/config/secret
+  volumes:
+  - name: secret-volume
+    secret:
+      secretName: my-secret
